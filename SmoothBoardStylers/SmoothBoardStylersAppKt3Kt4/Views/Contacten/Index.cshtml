@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Contacten</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAdres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurfBoardInteresses)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            @if (item.SurfBoardInteresses.Count > 0)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAdres)
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var surfboard in item.SurfBoardInteresses)
+                            {
+                                <li><a title="Afgehandeld" asp-action="RemoveInteresse" asp-route-contactId="@item.Id" asp-route-surfboardId="@surfboard.Id">@surfboard.Naam</a></li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

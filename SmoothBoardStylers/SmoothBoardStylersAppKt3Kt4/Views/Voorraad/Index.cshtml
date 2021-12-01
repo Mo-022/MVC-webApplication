@@ -1,0 +1,20 @@
+﻿@model SmoothBoardStylersApp.Models.Filiaal
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Id"] = Model.Id;
+    ViewData["Filiaal"] = Model.Naam;
+}
+
+<h1>Voorraad</h1>
+
+<div class="row text-center">
+    <form asp-action="Index">
+        <label for="filiaal">Selecteer Filiaal: </label>
+        <select name="filiaal" id="filiaal" asp-items="ViewBag.FiliaalId"></select>
+        <input type="submit" value="selecteer" />
+    </form>
+</div>
+
+
+@await Component.InvokeAsync("Voorraad", new { id = Model.Id })

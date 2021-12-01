@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Surfboard>
+
+@{
+    ViewData["Title"] = "Surfboards";
+}
+
+<h1>Our Surfboards</h1>
+
+<div class="text-center">
+    @foreach (var item in Model)
+    {
+        <a asp-action="Board" asp-controller="Shop" asp-route-id="@item.Id">
+            <div class="surfboard">
+                <img src="~/img/@item.FotoUrl" alt="@item.Naam" class="center-block" />
+                <p class="naam">@Html.DisplayFor(modelItem => item.Naam)</p>
+                <p class="prijs">@Html.DisplayFor(modelItem => item.Prijs)</p>
+            </div>
+        </a>
+    }
+    <div class="clearfix"></div>
+</div>
+@await Component.InvokeAsync("Filialen")

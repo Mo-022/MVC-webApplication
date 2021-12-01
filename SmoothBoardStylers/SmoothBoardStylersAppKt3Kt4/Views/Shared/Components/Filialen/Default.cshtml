@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Filiaal>
+
+<div class="filialen border-top">
+    <table>
+        <tbody>
+            <tr>
+                @foreach (var item in Model)
+                {
+                <td>
+                    <p>
+                        Smoothboard Saliers by @Html.DisplayFor(modelItem => item.Naam)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Adres)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Woonplaats)
+                    </p>
+                </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>

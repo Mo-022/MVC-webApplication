@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Smoothboardstylers.Models.Surfboards>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Aanbodslijst</h1>
+
+<div class="text-center">
+    @foreach (var item in Model)
+    {
+        <a asp-action="Details" asp-controller="Surfboards" asp-route-id="@item.Id">
+            <div>
+                <p class="naam">@Html.DisplayFor(modelItem => item.Naam)</p>
+                <img src="~/img/@item.FotoUrl  "alt="@item.Naam" class="center-block" style="height: 250px; width: 250px" />
+                <p class="prijs">@Html.DisplayFor(modelItem => item.Prijs)</p>
+            </div>
+        </a>
+    }
+</div>

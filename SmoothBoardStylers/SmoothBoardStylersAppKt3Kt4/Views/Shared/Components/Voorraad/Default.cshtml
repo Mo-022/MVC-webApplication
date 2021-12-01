@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Voorraad>
+
+@{
+    ViewData["Title"] = "Default";
+}
+
+<h1>Voorraad van @ViewData["Filiaal"]</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Voorraad" asp-route-id="@ViewBag.Id">Voeg Surfboard toe aan voorraad</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Surfboard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surfboard.Materiaal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surfboard.Prijs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surfboard.FotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiaal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aantal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surfboard.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surfboard.Materiaal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surfboard.Prijs)
+            </td>
+            <td>
+                <img src="~/img/thumbnail.@item.Surfboard.FotoUrl" alt="@item.Surfboard.Naam" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filiaal.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aantal)
+            </td>
+            <td>
+                <a asp-controller="Voorraad" asp-action="Edit", asp-route-filiaalId="@item.FiliaalId" asp-route-surfboardId="@item.SurfboardId">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

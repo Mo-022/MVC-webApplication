@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Faq>
+
+@{
+    ViewData["Title"] = "FAQ";
+}
+
+<h1>Frequently Asked Questions</h1>
+
+<partial name="_Vraag" />
+@if (!string.IsNullOrEmpty((string)ViewData["Message"]))
+{
+    <div class="form-group m-3">
+
+        <p class="bg-success text-white">
+            @ViewData["Message"];
+        </p>
+    </div>
+}
+<hr />
+<div id="faq" class="row">
+    @foreach (var item in Model)
+    {
+        <div class="bg-info text-white border p-2 col-md-12">
+
+            <h4>@Html.DisplayFor(modelItem => item.Vraag)</h4>
+        </div>
+        <div class="p-3 col-md-12">
+            @Html.DisplayFor(modelItem => item.Antwoord)
+        </div>
+        <div class="m-2"></div>
+    }
+</div>

@@ -1,0 +1,16 @@
+﻿<p>Zoek eerst in <a href="#faq">de F.A.Q.</a> of je een antwoord op jouw vraag kan vinden</p>
+<div class="row">    
+    <div class="col-md-6">
+        <form asp-action="Faq" asp-controller="Faqs">
+            <div class="form-group">
+                <label class="control-label" for="vraag">Jouw vraag:</label>
+                <input type="text" id="vraag" name="vraag" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">Jouw E-mailadres:</label>
+                <input type="email" id="email" name="email" class="form-control" />
+            </div>
+            <input type="submit" class="btn btn-info" value="Verzend" />
+        </form>
+    </div>
+</div>

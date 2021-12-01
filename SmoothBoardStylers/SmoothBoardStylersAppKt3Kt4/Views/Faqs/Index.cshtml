@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Faq>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.AantalVragen))
+{
+    <a class="text-danger" asp-controller="Vragen" asp-action="Index">@ViewData["AantalVragen"]</a> 
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vraag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Antwoord)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vraag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Antwoord)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

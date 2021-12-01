@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SmoothBoardStylersApp.Models.Vraag>
+
+@{
+    ViewData["Title"] = "Vragen";
+}
+
+<h1>Openstaande vragen</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tekst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vraagsteller)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Tekst)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vraagsteller.EmailAdres)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

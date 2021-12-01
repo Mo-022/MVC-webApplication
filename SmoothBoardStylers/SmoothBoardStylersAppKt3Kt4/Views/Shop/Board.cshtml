@@ -1,0 +1,63 @@
+﻿@model SmoothBoardStylersApp.Models.Surfboard
+
+@{
+    ViewData["Title"] = "Board";
+}
+
+<h1>Board</h1>
+
+<div>
+    <h4>@Model.Naam</h4>
+    <hr />
+    <img class="board" src="~/img/@Model.FotoUrl" alt="@Model.Naam" />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Beschrijving)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Materiaal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Materiaal.Naam)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prijs)
+        </dd>
+    </dl>
+</div>
+<div class="col-sm-8">
+    <form asp-action="Interesse" asp-route-id="@Model.Id">
+        <p>Ben je geïnteresseerd in dit board? Laat jouw e-mailadres achter, dan nemen wij contact met jou op.</p>
+        <div class="form-group">
+            <label for="email">E-Mailadres</label>
+            <input type="email" id="email" name="email" />
+            <input type="submit" value="Mail mij" class="btn btn-primary" />
+        </div>
+        @if (!string.IsNullOrEmpty((string)ViewData["Message"]))
+        {
+            <div class="form-group">
+
+                <p class="bg-info text-white">
+                    @ViewData["Message"];
+                </p>
+            </div>
+        }
+    </form>
+    <div>
+        <a asp-action="Index">Terug naar de Shop</a>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Filialen")

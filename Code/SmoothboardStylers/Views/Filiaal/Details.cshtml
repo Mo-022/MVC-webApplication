@@ -1,0 +1,37 @@
+﻿@model Smoothboardstylers.Models.Filiaal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Filiaal</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plaats)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plaats)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    @await Component.InvokeAsync("Voorraad", new { id = Model.Id })
+</div>
+
+<div>
+    <a asp-action="AddSurfboard" asp-route-id="@Model.Id">Add Surfboard</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

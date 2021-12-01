@@ -1,0 +1,84 @@
+﻿@model Smoothboardstylers.Models.Surfboards
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Surfboards</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Beschrijving)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prijs)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FotoUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FotoUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Materiaal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Materiaal.Naam)
+        </dd>
+    </dl>
+</div>
+<!-- Interesse formulier -->
+<div class="col-8 p-0">
+
+    <p>Geinteresseerd in dit board? Geef uw e-mail adres door en wij nemen zo spoedig mogelijk contact met u op.</p>
+
+    <form asp-action="CreateFromDetails" asp-controller="Interesses">
+
+        <input type="hidden" name="SurfboardId" value="@Model.Id" />
+
+
+
+        <div class="input-group">
+
+            <input type="email" class="form-control" name="Email" placeholder="e-mail adres">
+
+            <div class="input-group-append">
+
+                <button class="btn btn-outline-secondary" type="submit">Versturen</button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+
+    @if (TempData["InteresseCreated"] != null)
+
+    {
+
+        <p>Bedankt! Uw aanvraag is doorgegeven en we nemen snel contact met u op</p>
+
+    }
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
